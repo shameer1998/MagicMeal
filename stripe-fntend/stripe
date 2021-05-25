@@ -1,0 +1,58 @@
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import StripeCheckout from "react-stripe-checkout";
+
+function App() {
+  const [meal, setMeal] = useState({
+    name: "Chicken Wings",
+    price: "300",
+    productBy: "Exavier",
+  });
+
+  const makePayment = (token) => {
+    const body = {
+      token,
+      meal,
+    };
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    return fetch(`http://localhost:3001/api/payment`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        console.log("RESPONSE", response);
+        const { status } = response;
+        console.log("STATUS", status);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+        <StripeCheckout
+          stripeKey="pk_test_51IuUgbFjlDLD35dt8sj7Ufz6SzaWqvTRAC1Zlk3eNYwFsAG9qulXOpMSrNiS7blL206nqZl6BWkXUYFJxFb5f4Qv00dUlfWioK"
+          token={makePayment}
+          name="But meal"
+        />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
