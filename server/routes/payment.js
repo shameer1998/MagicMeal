@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const uuid = require("uuid/v4");
+//const uuid = require("uuid/v4");
+const { v4: uuidv4 } = require('uuid');//import { v4 as uuidv4 } from 'uuid';
+
 const stripe = require("stripe")(
   "sk_test_51IuUgbFjlDLD35dt8IEa91oMXKjlTG6VNwCITlieF4vK9h7e0ZcMCpIraem19UnYdOfEdg1BoqiSdso9f6EkHvAu00NSxE4PxE"
 );
@@ -15,7 +17,7 @@ router.post("/", async (req, res) => {
   console.log("Price", meal.price);
   console.log("Public key", process.env.REACT_APP_KEY);
   console.log("Secret Key", process.env.NODE_PAYMENT_SEC_KEY);
-  const idempontencyKey = uuid();
+  const idempontencyKey = uuidv4();
 
   return stripe.customers
     .create({ email: token.eamil, source: token.id })
