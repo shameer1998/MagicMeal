@@ -1,0 +1,39 @@
+/*===============================Header==================================*/
+ .Logo img {
+   position: relative;
+   float: left;
+   margin-bottom: 10px;
+ }
+.menu {
+  float: right;
+  color: white;
+  margin: 10px;
+}
+ .header-child {
+  text-align: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  text-align: center;
+  flex: 4;
+  }
+  
+  .header-child img {
+    height: 60px;
+    width: 150px;
+  }
+  .Header {
+  border-top: #f03613 solid 1px;
+  border-bottom:  #f03613 solid 1px;
+  display: flex;
+  padding-right: 5%;
+  position: sticky;
+  z-index: 2000;
+  top: 0;
+  background-color: #a589ba;
+  }
+
+  .header-child ul li {
+    font-size: 15px;
+    padding-left: 30px;
+    display: inline;
+  }

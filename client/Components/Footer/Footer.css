@@ -1,0 +1,33 @@
+/*=============================Footer Component=============================*/
+
+.Footer {
+    border-top: 1px solid black;
+    bottom: 0%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-top: 50px;
+    border-bottom: solid 1px lightgray;
+    margin-bottom: 50px;
+  }
+  
+  .Footer h1 {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .Footer div {
+    margin-top: 10px;
+    padding-top: 5%;
+  }
+  .Footer li {
+    list-style: none;
+  }
+  
+  .footer-child li {
+    font-size: 12px;
+  }
+  

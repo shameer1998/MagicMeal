@@ -1,0 +1,54 @@
+.TitleTag {
+    line-height: 0.5;
+    text-align: center;
+    margin-bottom: 100px;
+    margin-top: 50px;
+  }
+  .TitleTag h1 {
+    text-align: center;
+    position: relative;
+  }
+  .TitleTag h1:before {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 2px;
+    position: absolute;
+    background: #bbb;
+    left: 0;
+    top: 50%;
+    z-index: -2;
+  }
+  .TitleTag h1:after {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 2px;
+    position: absolute;
+    background: #bbb;
+    right: 0;
+    top: 50%;
+    z-index: -2;
+  }
+  .TitleTag span {
+    font-size: 40px;
+    width: 100px;
+    z-index: 2;
+  }
+  
+  .TitleTag button {
+      color: white;
+    height: 50px;
+    width: 300px;
+    background-color: #f03613 ;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  @media (max-width: 640px) {
+    .TitleTag button {
+      height: 40px;
+      width: 100px;
+      font-size: 10px;
+    }
+  }
+  
