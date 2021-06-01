@@ -1,39 +1,83 @@
 /*===============================Header==================================*/
- .Logo img {
-   position: relative;
-   float: left;
-   margin-bottom: 10px;
- }
-.menu {
-  float: right;
-  color: white;
-  margin: 10px;
-}
- .header-child {
-  text-align: center;
-  margin-top: 10px;
-  flex-wrap: wrap;
-  text-align: center;
-  flex: 4;
-  }
-  
-  .header-child img {
-    height: 60px;
-    width: 150px;
-  }
-  .Header {
-  border-top: #f03613 solid 1px;
-  border-bottom:  #f03613 solid 1px;
+
+.Header {
   display: flex;
   padding-right: 5%;
   position: sticky;
   z-index: 2000;
   top: 0;
-  background-color: #a589ba;
+  background-color: #242424;
+  height: 75px;
   }
 
-  .header-child ul li {
-    font-size: 15px;
-    padding-left: 30px;
-    display: inline;
+.header-navbar {
+  width: 100%;
+}
+
+.navbar-menu {
+  padding: 10px;
+  display: flex;
+  float: right;
+}
+
+.navbar-menu ul{
+  list-style-type: none;
+  display: inline;
+  display: flex;
+  float: right;
+}
+
+.navbar-menu ul li{
+  padding: 10px;
+  color: white;
+}
+
+
+
+  .fa-hamburger {
+    color: white;
+    font-size: 35px;
   }
+
+  .fa-times,.fa-bars {
+    color: white;
+  } 
+
+
+
+  .logo-name-link {padding: 10px;
+    float: left;
+    color: white;
+  }
+
+  .logo-name-link h2 {
+    color: white;
+    float: left;
+  }
+
+  .logo-name-link:link {
+    text-decoration: none;
+    color: white;
+  }
+
+
+
+
+  .header-link{
+    color: white;
+  }
+  .header-link:hover {
+    opacity: 50%;
+  }
+  .header-link:link {
+    color: white;
+    text-decoration: none;
+  }
+  .header-link.active {
+    background-color: white;
+  color: black;
+  }
+
+  
+
+

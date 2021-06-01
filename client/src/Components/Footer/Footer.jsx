@@ -6,43 +6,49 @@ import '../Footer/Footer.css'
 const Footer = () => {
     return (
         <div className="Footer">
+
+            <div className="Footer-b">
             <div className="footer-child">
                 <ul>
-                <h1> About Q-Food</h1>
-                    <li><Link style= {{textDecoration: 'none',color: 'black'  }} to= "/about-us">About Us</Link></li>
-                    <li><Link style= {{textDecoration: 'none',color: 'black'  }} to= "/contact-us">Contact Us</Link></li>
-                    <li><Link style= {{textDecoration: 'none',color: 'black'  }} to= "/privacy-policy">Privacy Policy</Link></li>
+                <h1> About Us</h1>
+                    <li><Link className="a" style= {{textDecoration: 'none'} } to= "/about-us">About Us</Link></li>
+                    <li><Link className="a" style= {{textDecoration: 'none'} } to= "/contact-us">Contact Us</Link></li>
+                    <li><Link className="a" style= {{textDecoration: 'none'} } to= "/privacy-policy">Privacy Policy</Link></li>
                 </ul>
             </div>
 
             <div className="footer-child">
                 <ul>
                     <h1>Customer Care</h1>
-                    <li><Link style= {{textDecoration: 'none',color: 'black'  }} to= "/complaint-form">Complaint Form</Link></li>
-                    <li><Link style= {{textDecoration: 'none',color: 'black'  }} to= "/FAQs">FAQ's</Link></li>
+                    <li><Link className="a" style= {{textDecoration: 'none'} } to= "/complaint-form">Complaint Form</Link></li>
+                    <li><Link className="a" style= {{textDecoration: 'none'} } to= "/FAQs">FAQ's</Link></li>
                 </ul>
             </div>
 
 
-            <div className="footer-child">
+            <div className="footer-child follow-us">
                 <ul>
                 <h1>Payment Partners</h1>
                     <li>
-                        <img style={{height: '20px', marginLeft: '5px'}} src="./Pictures/hbl.png" alt="hbl"/>
-                        <img style={{height: '20px' , marginLeft: '5px'}} src="./Pictures/mcb.png" alt="mcb"/>
-                        <img style={{height: '20px' , marginLeft: '5px'}} src="./Pictures/visa.png" alt="visa"/>
+                        <i class="fab fa-cc-mastercard fa-3x"></i>
+                        <i class="fab fa-cc-visa fa-3x"></i>
                     </li>
                 </ul>
             </div>
 
-            <div className="footer-child">
+            <div className="footer-child follow-us">
                 <ul>
-                    <h1>Partners</h1>
+                    <h1>Follow Us</h1>
                     <li>
-                        <img style={{height: '20px' , marginLeft: '5px'}} src="./Pictures/tcs.png" alt="tcs"/>
-                        <img style={{height: '20px' , marginLeft: '5px'}} src="./Pictures/dhl.png" alt="dnl"/>
+                        <a className="follow-icon-link" href="https://www.facebook.com/shameer.masood.98" target="_blank"> <i class="fab fa-facebook fa-2x"></i></a>
+                        <a className="follow-icon-link" href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram fa-2x"></i> </a>
                     </li>
                 </ul>
+            </div>
+            </div>
+
+            <div className="footer-bottom-mark">
+                <h1>MagicMeal.inc</h1>
             </div>
 
         </div>

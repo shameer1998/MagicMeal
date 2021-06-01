@@ -14,7 +14,7 @@
     width: 40%;
     height: 2px;
     position: absolute;
-    background: #bbb;
+    background: black;
     left: 0;
     top: 50%;
     z-index: -2;
@@ -25,7 +25,7 @@
     width: 40%;
     height: 2px;
     position: absolute;
-    background: #bbb;
+    background: black;
     right: 0;
     top: 50%;
     z-index: -2;
@@ -40,9 +40,10 @@
       color: white;
     height: 50px;
     width: 300px;
-    background-color: #f03613 ;
+    background-color: #242424 ;
     font-size: 20px;
     font-weight: bold;
+    border-color: #242424;
   }
   @media (max-width: 640px) {
     .TitleTag button {

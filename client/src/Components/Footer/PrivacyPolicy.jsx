@@ -1,6 +1,6 @@
 import React from 'react';
 import TitleTag from "../SpecialComp/TitleTag"
-
+import '../Footer/PrivacyPolicy.css'
 
 
 const PrivacyPolicy = () => {

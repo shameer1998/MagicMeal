@@ -1,9 +1,10 @@
-import React from 'react';
+/*============================================Importing React File===================================*/
+import React, {Component} from 'react';
 
 
 
 /*==============================================Importing CSS Files===================================*/
-import './App.css';
+import './App.css';/*App Css File*/
 
 
 
@@ -11,7 +12,9 @@ import './App.css';
 /*=============================================Importing Bootstrap CSS===============================*/
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-//============== Importing Browser Routet======================
+
+
+//=============================================Importing Browser Router======================
 import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom";
 
 
@@ -31,26 +34,64 @@ import FoodieLogin from './Components/Login/FoodieLogin';
 import FoodieSignup from './Components/Signup/FoodieSignup';
 import ComplaintForm from './Components/Footer/ComplaintForm';
 import FAQ from './Components/Footer/FAQ';
+import AdminMenuItems from './Components/RestaurantMenuPage/AdminMenuItems';
+import SideBar from './Components/SpecialComp/SideBar/SideBar';
+import AdminMainPage from './Components/RestaurantMenuPage/AdminMainPage';
+import Restaurant_Dashboard from './Components/RestaurantComponents/Dashboard/Dashboard';
+import Restaurant_Menus from './Components/RestaurantComponents/Menus/Menus';
+import Restaurant_Pending_Orders from './Components/RestaurantComponents/PendingOrders/PendingOrders';
+import Restaurant_Settings from './Components/RestaurantComponents/Settings/Settings';
+import Restaurants from './Components/OrderNow/Restaurants';
+import MenuItems from './Components/OrderNow/MenuItems';
+import NewMenuItem from './Components/RestaurantMenuPage/NewMenuItem';
+import Checkout from './Components/OrderNow/CheckOut/CheckOut';
 
+class App extends Component {
 
-function App() {
-  return (
+  state ={
+    visible : true
+  };
   
+  render(){
+ 
+  return (
+
+
+
   <Router>
 
+    
 
     <div className= "App">
 
-      <ScrollToTop/>
-      
-      <Header/>
-
+       <ScrollToTop/>
+       <Header/> 
+       {/* <Header/>  Header Section <Footer/> */}
+       {/*<AdminAppBar/> {/* Admin bar Optional */}
 
       <Switch>
+
+        {/* ============================Admin Page Routes================================== */}
+        <Route path= "/admin/main-page" component= {AdminMainPage} />
+        <Route path= "/admin/new-menu" component= {NewMenuItem} />
+
+
+
         <Route path= "/restaurant-login" component= {RestaurantLogin} />
         <Route path= "/restaurant-signup" component= {RestaurantSignup} />
         <Route path= "/foodie-login" component= {FoodieLogin} />
         <Route path= "/foodie-signup" component= {FoodieSignup} />
+
+        {/* ============================Restaurant and Order Pages================================== */}
+
+        <Route path= "/restaurants" component= {Restaurants} />
+        <Route path= "/menu-items" component= {MenuItems} />
+        
+
+
+        {/*============================Testing Routers======================= */}
+        
+        <Route path= "/admin/menu-items" component= {AdminMenuItems} />
 
         <Route path= "/complaint-form" component= {ComplaintForm} />
         <Route path= "/FAQs" component= {FAQ} />
@@ -60,23 +101,44 @@ function App() {
         <Route path= "/contact-us" component= {ContactUs} />
         <Route path= "/privacy-policy" component= {PrivacyPolicy} />
 
-
-        <Route path= "/notfound" component= {NotFound} />
         <Route path= "/" exact component= {MainPage} />
-        <Route path= "/notfound" component= {NotFound} />
+        <Route path= "/*" component= {NotFound} />
 
 
-      </Switch>
 
 
+        
+
+           <Router>
+
+                <SideBar/>
+                     <Switch>
+                     <Route path= "/admin/dashboard" component= {Restaurant_Dashboard} />
+                     <Route path= "/admin/settings" component= {Restaurant_Menus} />
+                      <Route path= "/admin/pending-orders" component= {Restaurant_Pending_Orders} />
+                      <Route path= "/admin/settings" component= {Restaurant_Settings} />
+                    </Switch>       
+            </Router>
+
+
+
+
+
+
+        {/* ============================Admin Page Routes================================== */}
+
+
+      </Switch> 
       <Footer/>
 
     </div>
-
+    
 
     
   </Router>
+  
   );
+  }
 }
 
 export default App;

@@ -1,12 +1,12 @@
 import React from 'react';
-
+import '../Footer/FAQ.css'
 
 
 
 
 const FAQ = () => {
     return ( 
-        <div>
+        <div className="faq">
             FAQ
         </div>
      );

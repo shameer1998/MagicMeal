@@ -1,0 +1,87 @@
+/*====================================================================Restaurant Login========================================================*/
+.restaurant_login_form {
+    text-align: center;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*===================================================================Foodie Login===============================================================*/
+
+
+.foodie_login_container {
+    max-width: 500px;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.form-fields {
+    padding-top: 10px;
+}
+
+
+.image {
+    width: 500px;
+    height: 700px;
+}
+
+
+.foodie_login_form {
+    color: white;
+    text-align: center;
+    background-color: lightskyblue;
+    width: 500px;
+    height: 700px;
+}
+
+.title {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+.submit {
+    padding-top: 50px;
+    color: black;
+}
+
+
+
+.fields {
+    width: 400px;
+}
+
+.mobilecode {
+    width: 3000px;
+}
+
+.mobilecode_field {
+    padding-left: 500px;
+}
+
+.mobilecode_button1 {
+    margin-top: 10px;
+
+}
+.mobilecode_button2 {
+    margin-top: 10px;
+
+}
+
+
+
+
+
+.already {
+    margin-top: 10px;
+}
