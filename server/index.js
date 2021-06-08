@@ -11,13 +11,14 @@ const menu = require("./routes/menuManagement");
 const payment = require("./routes/payment");
 const orders = require("./routes/orders");
 
-
 mongoose
   .connect(
-    'mongodb+srv://Nofel:Nofel@cluster0.pr1sm.mongodb.net/MagicMeal?retryWrites=true&w=majority'
-    , { useNewUrlParser: true }, { useUnifiedTopology: true })
+    "mongodb+srv://Nofel:pakistan123@cluster0.pr1sm.mongodb.net/MagicMeal?retryWrites=true&w=majority",
+    { useNewUrlParser: true },
+    { useUnifiedTopology: true }
+  )
   .then(() => console.log("Connected to mongo"))
-  .catch(() => console.log("Catched Error"));
+  .catch((e) => console.log("Catched Error", e));
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));

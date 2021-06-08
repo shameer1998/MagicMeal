@@ -1,7 +1,7 @@
 import React from 'react';
 
 //=============================================Importing Browser Router======================
-import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Restaurant_Dashboard from '../RestaurantComponents/Dashboard/Dashboard';
 import Restaurant_Menus from '../RestaurantComponents/Menus/Menus';
 import Restaurant_Pending_Orders from '../RestaurantComponents/PendingOrders/PendingOrders';
@@ -24,5 +24,5 @@ const AdminMainPage = () => {
         </div>
     );
 }
- 
+
 export default AdminMainPage;

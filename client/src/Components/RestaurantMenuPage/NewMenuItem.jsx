@@ -57,7 +57,7 @@ export default function NewMenuItem() {
       value: 'Italian',
       label: 'Italian',
     },
-   
+
   ];
 
   const handleChange = (event) => {
@@ -68,8 +68,8 @@ export default function NewMenuItem() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        
-        <Typography component="h1" variant="h5" style={{color: "black"}}>
+
+        <Typography component="h1" variant="h5" style={{ color: "black" }}>
           Add Menu Item
         </Typography>
         <form className={classes.form} noValidate>
@@ -96,61 +96,61 @@ export default function NewMenuItem() {
                 name="lastName"
                 autoComplete="lname"
               />
-            
+
             </Grid>
 
             <Grid item xs={12} sm={10}>
-                        <TextField
-                    id="outlined-select-currency-native"
-                    select
-                    label="Category"
-                    value={gender}
-                    onChange={handleChange}
-                    SelectProps={{
-                        native: true,
-                    }}
-                    helperText="Please select your Dish Category"
-                    variant="outlined"
-                    >
-                        {gender.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-                   
-                    </TextField>
-              </Grid>
+              <TextField
+                id="outlined-select-currency-native"
+                select
+                label="Category"
+                value={gender}
+                onChange={handleChange}
+                SelectProps={{
+                  native: true,
+                }}
+                helperText="Please select your Dish Category"
+                variant="outlined"
+              >
+                {gender.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+
+              </TextField>
+            </Grid>
 
 
             <Grid item xs={12}>
-                <TextField
-                    id="outlined-textarea"
-                    label="Description about Ingredients"
-                    placeholder="Placeholder"
-                    multiline
-                    variant="outlined"
-                />
+              <TextField
+                id="outlined-textarea"
+                label="Description about Ingredients"
+                placeholder="Placeholder"
+                multiline
+                variant="outlined"
+              />
             </Grid>
-            
+
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                 label="Show to User By Default"
               />
             </Grid>
-            
+
           </Grid>
-                 <Button
-  variant="contained"
-  component="label"
->
-  Upload Menu Picture
+          <Button
+            variant="contained"
+            component="label"
+          >
+            Upload Menu Picture
   <input
-    type="file"
-    hidden
-  />
-</Button>
-          
+              type="file"
+              hidden
+            />
+          </Button>
+
           <Button
             type="submit"
             fullWidth
@@ -160,7 +160,7 @@ export default function NewMenuItem() {
           >
             Save Changes
           </Button>
-   
+
 
           <Button
             type="submit"
@@ -171,10 +171,10 @@ export default function NewMenuItem() {
           >
             Cancel
           </Button>
-        
+
         </form>
       </div>
-      
+
     </Container>
   );
 }

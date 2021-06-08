@@ -4,7 +4,11 @@ const Joi = require("joi");
 const EndUser = mongoose.model(
   "EndUser",
   new mongoose.Schema({
-    name: {
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
       type: String,
       required: true,
     },
@@ -27,7 +31,8 @@ const EndUser = mongoose.model(
 
 function validateEndUser(user) {
   const schema = Joi.object({
-    name: Joi.string().min(5).required(),
+    firstName: Joi.string().min(5).required(),
+    lastName: Joi.string().min(5).required(),
     email: Joi.string().min(5).email().required(),
     password: Joi.string().min(5).max(255).required(),
     phone: Joi.string().min(5).required(),

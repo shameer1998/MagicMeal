@@ -1,3 +1,4 @@
+
 const { EndUser, validate } = require("../models/registeredEndUser");
 const express = require("express");
 const router = express.Router();
@@ -19,10 +20,13 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
+  console.log(req.body.inputData);
+
   if (error) return res.status(400).send(error.details[0].message);
 
   let endUser = new EndUser({
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
     phone: req.body.phone,
@@ -38,7 +42,8 @@ router.put("/:id", async (req, res) => {
   const endUser = await EndUser.findByIdAndUpdate(
     req.params.id,
     {
-      name: req.body.name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
       password: req.body.password,
       phone: req.body.phone,
