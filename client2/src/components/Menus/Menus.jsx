@@ -4,14 +4,13 @@ import AddMenuForm from "../AddMenuForm/AddMenuForm";
 import MenuCard from "../MenuCard/MenuCard";
 
 const Menus = () => {
+  const [menuItems, setMenuItems] = useState([]);
   const [data, setData] = useState({
     itemName: "",
     price: "",
     category: "",
     description: "",
   });
-
-  let menuItems = [{ ...data }];
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -55,6 +54,7 @@ const Menus = () => {
     event.preventDefault();
     alert("Form is submitted");
     console.log(data);
+    setMenuItems([...menuItems, data]);
     //console.log("Menu Items" + menuItems);
   };
 
