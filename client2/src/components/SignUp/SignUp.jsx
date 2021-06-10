@@ -30,7 +30,7 @@ const SignUp = () => {
     setPassword({ [event.target.name]: event.target.value });
     setPhone({ [event.target.name]: event.target.value });
     */
-    /*setFormData((preVal) => {
+    setFormData((preVal) => {
       if (name === "firstName") {
         return {
           firstName: value,
@@ -72,7 +72,7 @@ const SignUp = () => {
           phone: value,
         };
       }
-    });*/
+    });
   };
 
   const handleSubmit = (event) => {
@@ -97,7 +97,7 @@ const SignUp = () => {
           placeholder="firstName"
           id="firstName"
           onChange={handleChange}
-          //value={formData.firstName}
+          value={formData.firstName}
         />
         <br></br>
         <input
@@ -106,25 +106,25 @@ const SignUp = () => {
           placeholder="lastName"
           name="lastName"
           onChange={handleChange}
-          //value={formData.lastName}
+          value={formData.lastName}
         />
         <br></br>
         <input
-          type="text"
+          type="email"
           id="email"
           name="email"
           placeholder="email"
           onChange={handleChange}
-          //value={formData.email}
+          value={formData.email}
         />
         <br></br>
         <input
-          type="text"
+          type="password"
           id="password"
           name="password"
           placeholder="password"
           onChange={handleChange}
-          //value={formData.password}
+          value={formData.password}
         />
         <br></br>
         <input
@@ -133,10 +133,10 @@ const SignUp = () => {
           id="phone"
           name="phone"
           onChange={handleChange}
-          //value={formData.phone}
+          value={formData.phone}
         />
         <br></br>
-        <button type="submmit"> Submit </button>
+        <button type="submmit"> Sign Up </button>
       </form>
     </div>
   );
