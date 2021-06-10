@@ -85,6 +85,7 @@ const Menus = () => {
         category={formData.category}
         description={formData.description}
       />
+      <MenuCard formData={formData.items} />
     </div>
   );
 };
