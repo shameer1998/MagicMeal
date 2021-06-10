@@ -1,10 +1,17 @@
 import "./App.css";
-import { LogIn, SignUp, RestaurantSignUp, AddMenuForm } from "./components";
+import {
+  LogIn,
+  SignUp,
+  RestaurantSignUp,
+  AddMenuForm,
+  MenuCard,
+  Menus,
+} from "./components";
 
 function App() {
   return (
     <div className="App">
-      <AddMenuForm />
+      <Menus />
     </div>
   );
 }

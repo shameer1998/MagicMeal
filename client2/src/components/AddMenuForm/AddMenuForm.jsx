@@ -1,57 +1,13 @@
 import React from "react";
 import { useState } from "react";
-const AddMenuForm = () => {
-  const [formData, setFormData] = useState({
-    itemName: "",
-    price: "",
-    category: "",
-    description: "",
-  });
-
-  const handleChange = (event) => {
-    const value = event.target.value;
-    const name = event.target.name;
-
-    //console.log(name);
-    //console.log(value);
-
-    setFormData((preVal) => {
-      if (name === "itemName") {
-        return {
-          itemName: value,
-          category: preVal.category,
-          price: preVal.price,
-          description: preVal.description,
-        };
-      } else if (name === "price") {
-        return {
-          itemName: preVal.itemName,
-          category: preVal.category,
-          price: value,
-          descrption: preVal.description,
-        };
-      } else if (name === "category") {
-        return {
-          itemName: preVal,
-          category: value,
-          price: preVal.price,
-          description: preVal.description,
-        };
-      } else if (name === "description") {
-        return {
-          itemName: preVal.itemName,
-          category: preVal.category,
-          price: preVal.price,
-          description: value,
-        };
-      }
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);
-  };
+const AddMenuForm = ({
+  handleChange,
+  handleSubmit,
+  itemName,
+  price,
+  category,
+  description,
+}) => {
   return (
     <div>
       <h1>Add your items!</h1>
@@ -63,7 +19,7 @@ const AddMenuForm = () => {
             placeholder="Item Name"
             id="itemName"
             onChange={handleChange}
-            value={formData.itemName}
+            value={itemName}
           />
           <br></br>
 
@@ -73,7 +29,7 @@ const AddMenuForm = () => {
             placeholder="price"
             id="price"
             onChange={handleChange}
-            value={formData.price}
+            value={price}
           />
 
           <br></br>
@@ -83,7 +39,7 @@ const AddMenuForm = () => {
             placeholder="category"
             id="category"
             onChange={handleChange}
-            value={formData.category}
+            value={category}
           />
           <br></br>
           <input
@@ -92,7 +48,7 @@ const AddMenuForm = () => {
             placeholder="description"
             id="description"
             onChange={handleChange}
-            value={formData.description}
+            value={description}
           />
           <br></br>
           <button type="submit"> Submit </button>
