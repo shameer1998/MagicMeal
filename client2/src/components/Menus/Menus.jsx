@@ -1,91 +1,74 @@
 import React from "react";
 import { useState } from "react";
-import MenuCard from "../MenuCard/MenuCard";
 import AddMenuForm from "../AddMenuForm/AddMenuForm";
+import MenuCard from "../MenuCard/MenuCard";
 
 const Menus = () => {
-  const [formData, setFormData] = useState({
+  const [data, setData] = useState({
     itemName: "",
     price: "",
     category: "",
     description: "",
-    items: [],
   });
+
+  let menuItems = [{ ...data }];
 
   const handleChange = (event) => {
     const value = event.target.value;
     const name = event.target.name;
 
-    console.log(name);
-    console.log(value);
-
-    setFormData((preVal) => {
-      if (name === "itemName") {
+    setData((preVal) => {
+      if (name === "itemName")
         return {
           itemName: value,
-          category: preVal.category,
           price: preVal.price,
+          category: preVal.category,
           description: preVal.description,
         };
-      } else if (name === "price") {
+      else if (name === "price")
         return {
           itemName: preVal.itemName,
-          category: preVal.category,
           price: value,
-          descrption: preVal.description,
-        };
-      } else if (name === "category") {
-        return {
-          itemName: preVal,
-          category: value,
-          price: preVal.price,
+          category: preVal.category,
           description: preVal.description,
         };
-      } else if (name === "description") {
+      else if (name === "category")
         return {
           itemName: preVal.itemName,
-          category: preVal.category,
           price: preVal.price,
+          category: value,
+          description: preVal.description,
+        };
+      else if (name === "description")
+        return {
+          itemName: preVal.itemName,
+          price: preVal.price,
+          category: preVal.category,
           description: value,
         };
-      }
     });
+    console.log(name);
+    console.log(value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let items = [{ ...formData.items }];
-    items.push({
-      itemmName: formData.itemName,
-      price: formData.price,
-      category: formData.category,
-      description: formData.description,
-    });
-    console.log("After form submission my array is" + items);
-
-    setFormData({
-      items,
-      itemName: "",
-      price: "",
-      category: "",
-      description: "",
-    });
-
-    console.log("After form submission my state is" + formData);
-    //console.log(items);
+    alert("Form is submitted");
+    console.log(data);
+    //console.log("Menu Items" + menuItems);
   };
 
   return (
-    <div className="container">
+    <div>
       <AddMenuForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        itemName={formData.itemName}
-        price={formData.price}
-        category={formData.category}
-        description={formData.description}
+        itemName={data ? data.itemName : null}
+        price={data ? data.price : null}
+        category={data ? data.category : null}
+        description={data ? data.description : null}
       />
-      <MenuCard formData={formData.items} />
+      <MenuCard menu={menuItems} />
     </div>
   );
 };

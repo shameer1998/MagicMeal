@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 const AddMenuForm = ({
   handleChange,
   handleSubmit,
@@ -9,51 +8,42 @@ const AddMenuForm = ({
   description,
 }) => {
   return (
-    <div>
-      <h1>Add your items!</h1>
-      <div className="container">
-        <form onSubmit={handleSubmit}>
-          <input
-            name="itemName"
-            type="text"
-            placeholder="Item Name"
-            id="itemName"
-            onChange={handleChange}
-            value={itemName}
-          />
-          <br></br>
-
-          <input
-            name="price"
-            type="text"
-            placeholder="price"
-            id="price"
-            onChange={handleChange}
-            value={price}
-          />
-
-          <br></br>
-          <input
-            name="category"
-            type="text"
-            placeholder="category"
-            id="category"
-            onChange={handleChange}
-            value={category}
-          />
-          <br></br>
-          <input
-            name="description"
-            type="text"
-            placeholder="description"
-            id="description"
-            onChange={handleChange}
-            value={description}
-          />
-          <br></br>
-          <button type="submit"> Submit </button>
-        </form>
-      </div>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
+        <input
+          name="itemName"
+          placeholder="Item Name"
+          onChange={handleChange}
+          value={itemName}
+        />
+        {itemName}
+        <br></br>
+        <input
+          name="price"
+          placeholder="Price"
+          onChange={handleChange}
+          value={price}
+        />
+        {price}
+        <br></br>
+        <input
+          name="category"
+          placeholder="Category"
+          onChange={handleChange}
+          value={category}
+        />
+        {category}
+        <br></br>
+        <input
+          name="description"
+          placeholder="Description"
+          onChange={handleChange}
+          value={description}
+        />
+        {description}
+        <br></br>
+        <button type="submit"> Add Menu! </button>
+      </form>
     </div>
   );
 };
