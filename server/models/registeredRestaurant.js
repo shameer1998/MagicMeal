@@ -1,24 +1,36 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 
-const Restaurant = mongoose.model(
-  "Restaurant",
-  new mongoose.Schema({
-    name: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-    },
+const restaurantSchema = new mongoose.Schema({
+  restaurantName: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
 
-    password: {
-      type: String,
-      required: true,
-    },
-  })
-);
+  password: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    required: true,
+  },
+});
+
+restaurantSchema.methods.generateAuthentication = function () {
+  const token = jwt.sign({ _id: this._id }, "myKey");
+  return token;
+};
+
+const Restaurant = mongoose.model("Restaurant", restaurantSchema);
 
 function validateRestaurant(restaurant) {
   const schema = Joi.object({

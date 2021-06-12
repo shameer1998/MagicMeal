@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
-
+import { useHistory } from "react-router-dom";
 const LogIn = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const history = useHistory();
 
   const handleChange = (event) => {
     //console.log(event.target.value);
@@ -28,9 +30,28 @@ const LogIn = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
+    const { email, password } = formData;
+    const res = await fetch("http://localhost:3001/api/auth", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = res.json();
+    if (!data) {
+      window.alert("Could not login");
+    } else {
+      window.alert("Logged In Successfully");
+    }
+
+    //console.log(formData);
     /*
       console.log(firstName);
       console.log(lastName);
@@ -44,7 +65,7 @@ const LogIn = () => {
     <div>
       <h1>Log In</h1>
       <div className="container">
-        <form onSubmit={handleSubmit}>
+        <form method="POST" onSubmit={handleSubmit}>
           <input
             name="email"
             type="email"

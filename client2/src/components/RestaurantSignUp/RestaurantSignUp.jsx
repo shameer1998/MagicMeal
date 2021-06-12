@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 const SignUp = () => {
   /*
     const [firstName, setFirstName] = useState({ firstName: "" });
@@ -8,6 +9,8 @@ const SignUp = () => {
   const [password, setPassword] = useState({ password: "" });
   const [phone, setPhone] = useState({ phone: "" });
 */
+  const history = useHistory();
+
   const [formData, setFormData] = useState({
     restaurantName: "",
     email: "",
@@ -67,9 +70,30 @@ const SignUp = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
+    const { restaurantName, email, password, address, phone } = formData;
+
+    const res = await fetch("http://localhost:3001/api/restaurants", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        restaurantName,
+        email,
+        password,
+        address,
+        phone,
+      }),
+    });
+
+    const data = res.json();
+    if (!data) {
+      window.alert("Could not sign up");
+    } else {
+      window.alert("Sign up Successfull.");
+    }
     /*
     console.log(firstName);
     console.log(lastName);
@@ -80,7 +104,7 @@ const SignUp = () => {
   };
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
+      <form method="POST" onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
 
         <input
