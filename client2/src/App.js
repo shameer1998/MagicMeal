@@ -7,11 +7,12 @@ import {
   MenuCard,
   Menus,
 } from "./components";
+import { Home } from "./pages";
 
 function App() {
   return (
     <div className="App">
-      <Menus />
+      <SignUp />
     </div>
   );
 }

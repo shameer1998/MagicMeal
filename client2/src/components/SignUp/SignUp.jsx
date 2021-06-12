@@ -1,9 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+const sendingFormData = new FormData();
+
 const SignUp = () => {
+  const history = useHistory();
   /*
     const [firstName, setFirstName] = useState({ firstName: "" });
-  const [lastName, setlastName] = useState({ lastName: "" });
+    const [lastName, setlastName] = useState({ lastName: "" });
   const [email, setEmail] = useState({ email: "" });
   const [password, setPassword] = useState({ password: "" });
   const [phone, setPhone] = useState({ phone: "" });
@@ -17,8 +22,8 @@ const SignUp = () => {
   });
 
   const handleChange = (event) => {
-    //console.log(event.target.value);
-    //console.log(event.target.name);
+    console.log(event.target.value);
+    console.log(event.target.name);
     const value = event.target.value;
     const name = event.target.name;
 
@@ -75,20 +80,62 @@ const SignUp = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
+    const { firstName, lastName, email, password, phone } = formData;
+    const res = await fetch("http://localhost:3001/api/end-users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        password,
+        phone,
+      }),
+    });
+
+    const data = await res.json();
+    if (!data) {
+      window.alert("Could not register");
+      console.log("Could not register");
+    } else {
+      window.alert("Success");
+      console.log("Success");
+    }
+
+    //_______________ Axios API CALL_________________________//
+    /*sendingFormData.append("firstName", formData.firstName);
+    sendingFormData.append("lastName", formData.lastName);
+    sendingFormData.append("email", formData.email);
+    sendingFormData.append("password", formData.password);
+    sendingFormData.append("phone", formData.phone);
+    console.log(sendingFormData);
+    try {
+      const res = await axios
+        .post("http://localhost:3001/api/end-users", sendingFormData)
+        .then(console.log("Yo hoo"))
+        .catch("Promise problem.");
+    } catch (ex) {
+      console.log(ex);
+    }*/
+
+    //______________________________________________________________________
+
     /*
-    console.log(firstName);
-    console.log(lastName);
-    console.log(email);
-    console.log(password);
-    console.log(phone);
-*/
+    console.log(formData.firstName);
+    console.log(formData.lastName);
+    console.log(formData.email);
+    console.log(formData.password);
+    console.log(formData.phone);
+    console.log(formData);
+    */
   };
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
+      <form method="POST" onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
 
         <input

@@ -3,13 +3,19 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-require("dotenv").config();
+const config = require("config");
 
 const endUsers = require("./routes/registeredEndUsers");
 const restaurants = require("./routes/registeredRestaurants");
 const menu = require("./routes/menuManagement");
 const payment = require("./routes/payment");
 const orders = require("./routes/orders");
+const auth = require("./routes/auth");
+
+/*if (!config.get("jwtPrivateKey")) {
+  console.log("FATAL ERROR: jwtPrivateKey is not defined. ");
+  process.exit(1);
+}*/
 
 mongoose
   .connect(
@@ -29,7 +35,7 @@ app.use("/api/restaurants", restaurants);
 app.use("/api/menu", menu);
 app.use("/api/orders", orders);
 app.use("/api/payment", payment);
+app.use("/api/auth", auth);
 app.set("view engine", "ejs");
-
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Listening on port ${port}....`));
