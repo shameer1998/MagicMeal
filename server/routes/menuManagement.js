@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
+const _ = require("lodash");
 const { Menu, validate } = require("../models/menuManagement");
+const auth = require("../middleware/auth");
 const { upload } = require("../middleware/storingImages");
 
 router.get("/", async (req, res) => {
@@ -9,16 +11,13 @@ router.get("/", async (req, res) => {
   res.send(menu);
 });
 
-router.post("/", async (req, res) => {
+router.post("/addmenu", async (req, res) => {
   const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send("Validation error");
 
-  let menu = new Menu({
-    name: req.body.name,
-    category: req.body.category,
-    price: req.body.price,
-    description: req.body.descripton,
-  });
+  let menu = new Menu(
+    _.pick(req.body, ["itemName", "category", "price", "description"])
+  );
 
   menu = await menu.save(menu);
   res.send(menu);

@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-const LogIn = () => {
+import axios from "axios";
+
+const RestaurantLogIn = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -30,26 +32,28 @@ const LogIn = () => {
     });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const { email, password } = formData;
-    const res = await fetch("http://localhost:3001/api/auth/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
 
-    const data = res.json();
-    if (!data) {
+    axios
+      .post("http://localhost:3001/api/auth/restaurant", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        //console.log(response.data);
+        localStorage.setItem("token", JSON.stringify(response.data));
+        history.push("/menus");
+      });
+
+    //const data = res.json();
+    //console.log("This is the response data", data);
+    /*if (!data) {
       window.alert("Could not login");
     } else {
       window.alert("Logged In Successfully");
-    }
+    }*/
 
     //console.log(formData);
     /*
@@ -63,7 +67,7 @@ const LogIn = () => {
 
   return (
     <div>
-      <h1>User log In</h1>
+      <h1>Restaurant Log In</h1>
       <div className="container">
         <form method="POST" onSubmit={handleSubmit}>
           <input
@@ -91,4 +95,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default RestaurantLogIn;

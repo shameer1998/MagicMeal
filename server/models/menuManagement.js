@@ -4,7 +4,7 @@ const Joi = require("joi");
 const Menu = mongoose.model(
   "Menu",
   new mongoose.Schema({
-    name: {
+    itemName: {
       type: String,
       required: true,
     },
@@ -21,15 +21,19 @@ const Menu = mongoose.model(
       type: String,
       required: false,
     },
+    /* restaurantId: {
+      type: String,
+      required: true,
+    },*/
   })
 );
 
 function validateMenu(menu) {
   const schema = Joi.object({
-    name: Joi.string().min(5).required(),
-    category: Joi.string().min(5).required(),
+    itemName: Joi.string().required(),
+    category: Joi.string().required(),
     price: Joi.string().required(),
-    description: Joi.string().min(5).required(),
+    description: Joi.string().required(),
   });
 
   const result = schema.validate(menu);

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import AddMenuForm from "../AddMenuForm/AddMenuForm";
 import MenuCard from "../MenuCard/MenuCard";
+import axios from "axios";
 
 const Menus = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -50,12 +51,46 @@ const Menus = () => {
     console.log(value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    alert("Form is submitted");
-    console.log(data);
     setMenuItems([...menuItems, data]);
-    //console.log("Menu Items" + menuItems);
+    //console.log("State changed ", data);
+    const { itemName, price, category, description } = data;
+    // let token = JSON.parse(localStorage.getItem("token"));
+    // console.log(token.token);
+    // let t = token.token;
+    // console.log(t);
+    axios
+      .post("http://localhost:3001/api/menu/addmenu", {
+        itemName: itemName,
+        price: price,
+        category: category,
+        description: description,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+
+    // const res = await fetch("http://localhost:3001/api/menu/addmenu", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     // "x-auth-token": localStorage.getItem
+    //   },
+    //   body: JSON.stringify({
+    //     itemName,
+    //     price,
+    //     category,
+    //     description,
+    //   }),
+    // })
+    //   .then((response) => {
+    //     console.log("Database Updated", response.json());
+    //   })
+    //   .catch("response Error");
+
+    /* const datas = await res.json();
+    console.log("Menu Items", datas);*/
   };
 
   return (
@@ -68,7 +103,7 @@ const Menus = () => {
         category={data ? data.category : null}
         description={data ? data.description : null}
       />
-      <MenuCard menu={menuItems} />
+      <MenuCard />
     </div>
   );
 };

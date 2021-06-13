@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const MenuCard = ({ menu }) => {
+const MenuCard = () => {
+  let [d, setD] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/menu").then((response) => {
+      console.log(response.data);
+      setD(response.data);
+      console.log(d);
+    });
+  }, []);
+
   return (
     <div className="container">
-      {menu.map((item) => (
-        <div className="card" style={{ width: "400px" }}>
+      {d.map((item, key) => (
+        <div className="card" key={key} style={{ width: "400px" }}>
           <img src="images/pizza.jpg" alt="Pizza" style={{ width: "100%" }} />
           <div className="card-body">
             <h4 className="card-title">Item{item.itemName}</h4>

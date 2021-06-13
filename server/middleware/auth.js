@@ -8,7 +8,7 @@ function auth(req, res, next) {
       .send("Access denied. Authentication failed because no token provided.");
 
   try {
-    const decodedPayload = jwt.vevify(token, "myKey");
+    const decodedPayload = jwt.verify(token, "myKey");
     req.user = decodedPayload;
     next();
   } catch (ex) {
