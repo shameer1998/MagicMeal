@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
+const jwt = require("jsonwebtoken");
 
 const restaurantSchema = new mongoose.Schema({
   restaurantName: {
@@ -34,12 +35,15 @@ const Restaurant = mongoose.model("Restaurant", restaurantSchema);
 
 function validateRestaurant(restaurant) {
   const schema = Joi.object({
-    name: Joi.string().min(5).required(),
+    restaurantName: Joi.string().min(5).required(),
     email: Joi.string().min(5).email().required(),
     password: Joi.string().min(5).max(255).required(),
+    address: Joi.string().required(),
+    phone: Joi.string().required(),
   });
 
   const result = schema.validate(restaurant);
+  console.log(result);
   return result;
 }
 

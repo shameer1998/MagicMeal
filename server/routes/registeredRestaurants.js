@@ -19,7 +19,7 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send("Incorrect data entered");
 
   let restaurant = await Restaurant.findOne({ email: req.body.email });
   if (restaurant) return res.status(400).send("User already exists");
@@ -36,9 +36,8 @@ router.post("/", async (req, res) => {
 
   const salt = await bcrypt.genSalt(10);
   restaurant.password = await bcrypt.hash(restaurant.password, salt);
-  restaurant = await restaurant.save(restaurant);
-
   const token = restaurant.generateAuthentication();
+  restaurant = await restaurant.save(restaurant);
   res
     .header("x-auth-token", token)
     .send(_.pick(restaurant, ["_id", "restaurantName", "email"]));
