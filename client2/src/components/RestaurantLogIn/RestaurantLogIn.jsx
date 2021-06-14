@@ -42,7 +42,7 @@ const RestaurantLogIn = () => {
         password: password,
       })
       .then((response) => {
-        //console.log(response.data);
+        console.log(response.data);
         localStorage.setItem("token", JSON.stringify(response.data));
         history.push("/menus");
       });

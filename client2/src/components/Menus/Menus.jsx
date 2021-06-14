@@ -60,6 +60,8 @@ const Menus = () => {
     // console.log(token.token);
     // let t = token.token;
     // console.log(t);
+
+    /* ========================AXIOS CALL TO POST DATA===============================
     axios
       .post("http://localhost:3001/api/menu/addmenu", {
         itemName: itemName,
@@ -68,8 +70,13 @@ const Menus = () => {
         description: description,
       })
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
+        const token = localStorage.getItem("token");
+        const newToken = console.log(JSON.parse(token["_id"]));
+        //console.log(newToken);
       });
+      */
+    // ====================================================================================//
 
     // const res = await fetch("http://localhost:3001/api/menu/addmenu", {
     //   method: "POST",
@@ -93,6 +100,19 @@ const Menus = () => {
     console.log("Menu Items", datas);*/
   };
 
+  const handleDelete = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    // console.log(name);
+    // console.log(value);
+    let arrayOfMenuItems = [...menuItems];
+    let index = arrayOfMenuItems.indexOf(event.target.value);
+    if (arrayOfMenuItems !== -1) {
+      arrayOfMenuItems.splice(index, 1);
+      setMenuItems([...arrayOfMenuItems]);
+    }
+  };
+
   return (
     <div>
       <AddMenuForm
@@ -103,7 +123,7 @@ const Menus = () => {
         category={data ? data.category : null}
         description={data ? data.description : null}
       />
-      <MenuCard />
+      <MenuCard menu={menuItems} handleDelete={handleDelete} />
     </div>
   );
 };

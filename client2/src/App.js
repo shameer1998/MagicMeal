@@ -7,23 +7,37 @@ import {
   AddMenuForm,
   MenuCard,
   Menus,
+  NavBar,
 } from "./components";
-import { Home, MenuPage } from "./pages";
+import { Home, MenuPage, About, Contact } from "./pages";
 import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/restaurant-signup" component={RestaurantSignUp} />
-        <Route path="/signUp" component={SignUp} />
-        <Route path="/restaurant-logIn" component={RestaurantLogIn} />
-        <Route path="/logIn" component={LogIn} />
-        <Route path="/addmenu" component={AddMenuForm} />
-        <Route path="/menucard" component={MenuCard} />
-        <Route path="/menus" component={MenuPage} />
-      </Switch>
+      <NavBar />
+      <Route exact path="/">
+        <Home />
+      </Route>
+
+      <Route path="/contact">
+        <Contact />
+      </Route>
+
+      <Route path="/about">
+        <About />
+      </Route>
+
+      <Route path="/signup">
+        <SignUp />
+      </Route>
+      <Route path="/login">
+        <LogIn />
+      </Route>
+
+      <Route path="/menus">
+        <Menus />
+      </Route>
     </div>
   );
 }

@@ -27,11 +27,10 @@ router.post("/restaurant", async (req, res) => {
   const token = restaurant.generateAuthentication();
 
   //console.log("est data", result);
-  res
-    // .header("x-auth-token", token)
-    // .send(_.pick(restaurant, ["_id", "restaurantName", "email"]));
-    .status(200)
-    .json({ restaurant, token });
+  res.header("x-auth-token", token).status(200).json({ restaurant, token });
+  // .header("x-auth-token", token)
+  // .send(_.pick(restaurant, ["_id", "restaurantName", "email"]));
+  //.header("x-auth-token", token)
 });
 // ___________________________POST METHOD EndUser____________________________//
 router.post("/user", async (req, res) => {

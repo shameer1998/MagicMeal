@@ -25,6 +25,7 @@ const restaurantSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  menuItems: [{ type: Schema.Types.ObjectId, ref: "Menu" }],
 });
 
 restaurantSchema.methods.generateAuthentication = function () {

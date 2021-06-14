@@ -21,10 +21,11 @@ const Menu = mongoose.model(
       type: String,
       required: false,
     },
-    /* restaurantId: {
-      type: String,
+    restaurantId: {
+      type: Schema.Types.ObjectId,
+      ref: "Restaurant",
       required: true,
-    },*/
+    },
   })
 );
 
@@ -34,6 +35,7 @@ function validateMenu(menu) {
     category: Joi.string().required(),
     price: Joi.string().required(),
     description: Joi.string().required(),
+    //restaurandId: Joi.string().required(),
   });
 
   const result = schema.validate(menu);

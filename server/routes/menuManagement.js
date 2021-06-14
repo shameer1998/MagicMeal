@@ -44,7 +44,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const menu = await Menu.deleteOne({ _id: req.params.id });
 
-  if (!menu) return res.status(404).send("USer not in data base");
+  if (!menu) return res.status(404).send("Menu not in data base");
 
   res.send(menu);
 });
