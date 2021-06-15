@@ -22,7 +22,7 @@ const Menu = mongoose.model(
       required: false,
     },
     restaurantId: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Restaurant",
       required: true,
     },

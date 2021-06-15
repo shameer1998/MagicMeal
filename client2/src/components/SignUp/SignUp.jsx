@@ -104,6 +104,7 @@ const SignUp = () => {
     } else {
       window.alert("Success");
       console.log("Success");
+      history.push("/");
     }
 
     //_______________ Axios API CALL_________________________//

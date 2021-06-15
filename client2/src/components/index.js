@@ -6,3 +6,5 @@ export { default as AddMenuForm } from "./AddMenuForm/AddMenuForm";
 export { default as MenuCard } from "./MenuCard/MenuCard";
 export { default as Menus } from "./Menus/Menus";
 export { default as NavBar } from "./NavBar/NavBar";
+export { default as RestaurantCard } from "./RestaurantCard/RestaurantCard";
+export { default as ViewMenuCard } from "./ViewMenuCard/ViewMenuCard";

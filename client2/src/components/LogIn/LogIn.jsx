@@ -48,7 +48,7 @@ const LogIn = () => {
     if (!data) {
       window.alert("Could not login");
     } else {
-      window.alert("Logged In Successfully");
+      history.push("/customer/feed");
     }
 
     //console.log(formData);

@@ -9,7 +9,14 @@ import {
   Menus,
   NavBar,
 } from "./components";
-import { Home, MenuPage, About, Contact } from "./pages";
+import {
+  Home,
+  MenuPage,
+  About,
+  Contact,
+  CustomerFeedPage,
+  ViewMenus,
+} from "./pages";
 import { Route, Switch } from "react-router-dom";
 
 function App() {
@@ -36,7 +43,15 @@ function App() {
       </Route>
 
       <Route path="/menus">
-        <Menus />
+        <MenuPage />
+      </Route>
+
+      <Route path="/customer/feed">
+        <CustomerFeedPage />
+      </Route>
+
+      <Route path="/viewmenus">
+        <ViewMenus />
       </Route>
     </div>
   );
