@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-const SignUp = () => {
+const RestaurantSignUp = () => {
   /*
     const [firstName, setFirstName] = useState({ firstName: "" });
   const [lastName, setlastName] = useState({ lastName: "" });
@@ -158,4 +158,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default RestaurantSignUp;
