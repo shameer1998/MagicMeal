@@ -1,11 +1,28 @@
 const mongoose = require("mongoose");
-
-const orderSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    product: { type: mongoose.Schema.Types.ObjectId, ref: "Menu", required: true },
-    quantity: { type: Number, default: 1 }
+const orederSchema = mongoose.Schema({
+  items: [
+    {
+      item: { type: Object, required: true },
+      quantity: { type: Number, required: true },
+    },
+  ],
+  customer: {
+    name: {
+      type: String,
+      required: true,
+    },
+    contact: {
+      type: String,
+      required: true,
+    },
+    customerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Customer",
+      required: true,
+    },
+  },
 });
 
-const Order = mongoose.model("Order", orderSchema);
+const Orders = mongoose.model("Orders", orederSchema);
 
-exports.Order = Order;
+exports.Orders = Orders;

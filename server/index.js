@@ -1,25 +1,16 @@
 const mongoose = require("mongoose");
 const express = require("express");
-const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const config = require("config");
-const cookieParser = require("cookie-parser");
-const endUsers = require("./routes/registeredEndUsers");
-const restaurants = require("./routes/registeredRestaurants");
-const menu = require("./routes/menuManagement");
-const payment = require("./routes/payment");
-const orders = require("./routes/orders");
-const auth = require("./routes/auth");
+const app = express();
 
-/*if (!config.get("jwtPrivateKey")) {
-  console.log("FATAL ERROR: jwtPrivateKey is not defined. ");
-  process.exit(1);
-}*/
+const auth = require("./routes/auth");
+const item = require("./routes/item");
+const user = require("./routes/user");
 
 mongoose
   .connect(
-    "mongodb+srv://Nofel:pakistan123@cluster0.pr1sm.mongodb.net/MagicMeal?retryWrites=true&w=majority",
+    "mongodb+srv://Noor:pakistan123@cluster0.mj1ib.mongodb.net/MagicMeal?retryWrites=true&w=majority",
     { useNewUrlParser: true },
     { useUnifiedTopology: true }
   )
@@ -29,14 +20,13 @@ mongoose
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cookieParser());
 app.use(cors());
-app.use("/api/end-users", endUsers);
-app.use("/api/restaurants", restaurants);
-app.use("/api/menu", menu);
-app.use("/api/orders", orders);
-app.use("/api/payment", payment);
-app.use("/api/auth", auth);
-app.set("view engine", "ejs");
-const port = process.env.PORT || 3001;
-app.listen(port, () => console.log(`Listening on port ${port}....`));
+
+app.use("/auth", auth);
+app.use("/item", item);
+app.use("/user", user);
+
+const port = 3001;
+app.listen(port, () => {
+  console.log(`Listening to port ${port}...`);
+});

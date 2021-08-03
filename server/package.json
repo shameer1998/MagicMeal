@@ -1,29 +1,31 @@
 {
-  "name": "fyp",
+  "name": "meal",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nob786/meal.git"
+  },
+  "author": "Noor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nob786/meal/issues"
+  },
+  "homepage": "https://github.com/nob786/meal#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "config": "^3.3.6",
-    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "ejs": "^3.1.6",
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
-    "joi": "^17.4.0",
+    "joi": "^17.4.1",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.21",
-    "mongoose": "^5.12.10",
-    "multer": "^1.4.2",
-    "nodemon": "^2.0.7",
-    "stripe": "^8.149.0",
-    "uuid": "^8.3.2"
+    "mongoose": "^5.13.3",
+    "nodemailer": "^6.6.3",
+    "nodemon": "^2.0.12"
   }
 }
