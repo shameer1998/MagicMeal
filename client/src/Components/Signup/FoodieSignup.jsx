@@ -126,6 +126,8 @@ const FoodieSignup = () => {
     .then((res)=>{
       console.log(res.data);
       window.alert("User Resgister Successfully");
+    }).catch((err)=>{
+      window.alert("ERROR");
     })
 
 

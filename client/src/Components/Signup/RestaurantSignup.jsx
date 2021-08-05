@@ -70,6 +70,8 @@ export default function RestaurantSignup() {
     restaurantName: "",
     restaurantLocation: "",
     contact: "",
+    category: "",
+    role: "restaurant"
   });
 
   const handleChange = (event) => {
@@ -92,16 +94,20 @@ export default function RestaurantSignup() {
       restaurantName,
       restaurantLocation,
       contact, 
+      category,
+      role,
     } = restAdmin;
 
     axios
       .post("http://localhost:3001/auth/signup-restaurant", {
-        OwnerName: OwnerName,
+        ownerName: OwnerName,
         email: email,
         password: password,
         restaurantName: restaurantName,
-        restaurantLocation: restaurantLocation,
+        address: restaurantLocation,
         contact: contact,
+        category: category,
+        role: role,
       })
       .then((res) => {
         console.log(res.data);
@@ -126,20 +132,20 @@ export default function RestaurantSignup() {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
+                autoComplete="name"
                 name="OwnerName"
                 variant="outlined"
                 required
                 fullWidth
                 id="OwnerName"
-                label="First Name"
+                label="Owner Name"
                 autoFocus
                 value={restAdmin.OwnerName}
                 onChange={handleChange}
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            {/*<Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
                 required
@@ -151,7 +157,7 @@ export default function RestaurantSignup() {
                 value={restAdmin.lastName}
                 onChange={handleChange}
               />
-            </Grid>
+  </Grid>*/}
 
             {/*     City Drop down
             <Grid item xs={12}>
@@ -174,50 +180,7 @@ export default function RestaurantSignup() {
                     </Select>
               </FormControl>
             </Grid> */}
-
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="city"
-                label="City"
-                name="city"
-                autoComplete="city"
-                value={restAdmin.city}
-                onChange={handleChange}
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                value={restAdmin.email}
-                onChange={handleChange}
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Password"
-                name="password"
-                autoComplete="password"
-                value={restAdmin.password}
-                onChange={handleChange}
-              />
-            </Grid>
-
-            <Grid item xs={12}>
+                        <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
@@ -256,25 +219,82 @@ export default function RestaurantSignup() {
               />
             </Grid>
 
+            {/*<Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="city"
+                label="City"
+                name="city"
+                autoComplete="city"
+                value={restAdmin.city}
+                onChange={handleChange}
+              />
+          </Grid>*/}
+
             <Grid item xs={12}>
               <TextField
-                id="outlined-textarea"
-                label="Description about Restaurant"
-                placeholder="Placeholder"
-                multiline
                 variant="outlined"
-                name="description"
-                value={restAdmin.description}
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={restAdmin.email}
                 onChange={handleChange}
               />
             </Grid>
 
             <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Password"
+                name="password"
+                autoComplete="password"
+                value={restAdmin.password}
+                onChange={handleChange}
+              />
+            </Grid>
+
+
+
+
+
+            <Grid item xs={12}>
+              <TextField
+                id="outlined-textarea"
+                label="Restaurant Category"
+                placeholder="Category"
+                multiline
+                variant="outlined"
+                name="category"
+                value={restAdmin.category}
+                onChange={handleChange}
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+            <TextField
+          id="standard-read-only-input"
+          label="Role"
+          defaultValue="Restaurant"
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+        </Grid>
+
+            {/*<Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                 label="I want to receive inspiration, marketing promotions and updates via email."
               />
-            </Grid>
+        </Grid>*/}
           </Grid>
 
           <button onClick={handleSubmit}>Submit</button>
