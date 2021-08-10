@@ -2,7 +2,7 @@ import React from "react";
 import "./Login.css";
 
 //=========================Importing=================
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Button from "../SpecialComp/Button/Button";
 import ReactInputVerificationCode from "react-input-verification-code";
 import axios from "axios";
@@ -18,12 +18,20 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import PhoneIphoneIcon from "@material-ui/icons/PhoneIphone";
 import ScreenLockPortraitIcon from "@material-ui/icons/ScreenLockPortrait";
 
+//Material Ui for Role
+import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+
 const FoodieLogin = () => {
   const [formData, setFormData] = React.useState({
     email: "",
     password: "",
   });
-
+  const history = useHistory();
   //const history = useHistory();
 
   const handleChange = (event) => {
@@ -47,19 +55,38 @@ const FoodieLogin = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = formData;
 
-    axios
+    await axios
       .post("http://localhost:3001/auth/login", {
         email: email,
         password: password,
       })
       .then((response) => {
-        console.log(response.data);
-        window.alert("User Logged in");
-        localStorage.setItem("token", JSON.stringify(response.data));
+        /* console.log("Whole response", response);
+        console.log("Response data", response.data);
+        console.log("token", response.data.token);
+        console.log("role", response.data.role); */
+        //console.log(role);
+        //console.log(token);
+        const token = response.data.token;
+        const role = response.data.role;
+        if (!token) {
+          console.log("Your token is empty", token);
+        } else {
+          window.alert("User Logged in");
+          localStorage.setItem("token", JSON.stringify(token));
+          if (role === "restaurant") {
+            window.alert("Restaurant Logged In");
+            history.push("/menu-items");
+            // history.push("/admin/menu-items");
+          } else if (role === "customer"){
+            window.alert("Customer Logged In");
+            history.push("/");
+          }
+        }
         //history.push("/menus");
       });
 
@@ -79,6 +106,23 @@ const FoodieLogin = () => {
       console.log(password);
       console.log(phone);
   */
+  };
+
+  const useStyles = makeStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  }));
+
+  const classes = useStyles();
+  const [role, setRole] = React.useState("");
+
+  const handleRole = (event) => {
+    setRole(event.target.value);
   };
 
   return (
@@ -125,7 +169,7 @@ const FoodieLogin = () => {
           />
         </div>
 
-        <div className="mobilecode_button1">
+        {/*  <div className="mobilecode_button1">
           <Button
             title="Send Code to Mobile Number"
             height="35px"
@@ -157,7 +201,40 @@ const FoodieLogin = () => {
               ),
             }}
           />
+        </div>   
+                <div>
+          <FormControl className={classes.formControl}>
+            <InputLabel id="demo-simple-select-label">Role</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={role}
+              onChange={handleRole}
+            >
+              <MenuItem value={"customer"}>Customer</MenuItem>
+              <MenuItem value={"restaurant"}>Restaurant</MenuItem>
+            </Select>
+          </FormControl>
         </div>
+
+        <div className="form-fields">
+          <TextField
+            name="role"
+            className="password fields"
+            id="input-with-icon-textfield"
+            label="Role"
+            type="text"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start"></InputAdornment>
+              ),
+            }}
+            onChange={handleChange}
+          />
+        </div>   
+         */}
+
+
 
         <div className="submit">
           {/*<Button className="foodie_signup_button" title="Login" height="40px" width="200px" color="black" btn_color="white"

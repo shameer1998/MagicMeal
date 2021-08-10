@@ -2,10 +2,11 @@
 
 
 .Single_Menu {
-    height: 450px;
-    width: 400px;
+    height: 200px;
+    width: 100%;
     margin-top: 20px;
     background-color: #242424;
+    display: flex;
 }
 
 .container {
@@ -15,8 +16,8 @@
 }
 
 .menu_image {
-  height: 300px;
-  width: 400px;
+  height: 200px;
+  width: 150px;
 }
 
 h1 {
@@ -27,7 +28,7 @@ h1 {
 }
 
 h3 {
-  color: gray;
+  color: wheat;
   font-size: 15px;
   text-align: center;
 }
@@ -48,5 +49,7 @@ h3 {
 
   color: white;
 }
-
+.add-to-cart-button{
+  color: white;
+}
 

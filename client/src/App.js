@@ -47,6 +47,14 @@ class App extends Component {
     this.callAPI();
   }
 
+  showOff(){
+    if (window.location.pathname==="./foodie-login")
+    return null;
+    else
+    return
+    <Header />;
+  }
+
   callAPI() {
     fetch("http://localhost:9000/testAPI")
       .then((res) => res.text())
@@ -62,7 +70,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <ScrollToTop />
-          <Header />
+          {window.location.pathname==="/foodie-login" || window.location.pathname==="/foodie-signup" ? null : <Header/>}
           <p>{this.state.apiResponse}</p>
 
           {/* <Header/>  Header Section <Footer/> */}
@@ -85,8 +93,6 @@ class App extends Component {
 
             {/*============================Testing Routers======================= */}
 
-            
-
             <Route path="/admin/menu-items" component={AdminMenuItems} />
 
             <Route path="/complaint-form" component={ComplaintForm} />
@@ -95,16 +101,15 @@ class App extends Component {
             <Route path="/about-us" component={AboutUs} />
             <Route path="/contact-us" component={ContactUs} />
             <Route path="/privacy-policy" component={PrivacyPolicy} />
-            
 
             <Route path="/" exact component={MainPage} />
-            
+
             <Route path="/check" component={Checkout} />
             <Route path="/*" component={NotFound} />
 
             {/* ============================Admin Page Routes================================== */}
           </Switch>
-          <Footer />
+          {window.location.pathname==="/foodie-login" || window.location.pathname==="/foodie-signup" ? null : <Footer />}
         </div>
       </Router>
     );

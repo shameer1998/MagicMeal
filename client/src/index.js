@@ -8,7 +8,6 @@ import Checkout from "./Components/Checkout/Checkout";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> <Cart />*/}
     <App />
   </React.StrictMode>,
   document.getElementById("root")

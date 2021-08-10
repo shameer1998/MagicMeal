@@ -165,9 +165,7 @@ const FoodieSignup = () => {
                                 name="firstName"
                                 className= "firstname fields"
                                 id="input-with-icon-textfield"
-                                autoComplete='off'
                                 label="First Name"
-                                type="text"
                                 InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
