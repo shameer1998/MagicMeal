@@ -1,0 +1,32 @@
+.partener-container {
+    position: relative;
+    text-align: center;
+
+}
+.partener-container img {
+    width: 100%;
+  max-width: 100%px;
+  height: auto;
+  max-height: 700px;
+}
+
+
+.partener-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.partener-text h1{
+    color: white;
+}
+
+.partener-text p {
+    color: white;
+}
+.partener-button {
+    margin-top: 70px;
+
+}

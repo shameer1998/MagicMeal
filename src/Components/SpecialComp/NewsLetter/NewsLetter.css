@@ -1,0 +1,32 @@
+.newsletter {
+    background-color: #242424;
+    height: 400px;
+    margin-top: 100px;
+    text-align: center;
+    border-bottom: white 1px solid;
+}
+
+.newsletter-cont {
+    margin-top: 100px;
+    text-align: center;
+}
+
+/*   Title of News Letter*/
+.newsletter-title {
+    padding-top: 80px;
+    text-align: center;
+    color: white;
+}
+
+
+
+
+.newsletter-field {
+    height: 60px;
+    width: 600px;
+    margin-top: 20px;
+}
+
+.subscribe_button {
+    margin-top: 20px;
+}
